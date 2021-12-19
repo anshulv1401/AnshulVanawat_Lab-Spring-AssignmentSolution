@@ -14,8 +14,6 @@ import com.example.springbootstudentapp.service.UserDetailsServiceImpl;
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	// This is same as <bean id="userDetailsService:
-	// class="com.example.springbootdeom.service.UserDetailsServiceImpl">
 	@Bean
 	public UserDetailsService userDetailsService() {
 		return new UserDetailsServiceImpl();
@@ -42,10 +40,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/books/save", "/books/showFormForAdd", "/books/403")
-				.hasAnyAuthority("USER", "ADMIN").antMatchers("/books/showFormForUpdate", "/books/delete")
+		http.authorizeRequests().antMatchers("/", "/students/save", "/students/showFormForAdd", "/students/403")
+				.hasAnyAuthority("USER", "ADMIN").antMatchers("/students/showFormForUpdate", "/students/delete")
 				.hasAuthority("ADMIN").anyRequest().authenticated().and().formLogin().loginProcessingUrl("/login")
-				.successForwardUrl("/books/list").permitAll().and().logout().logoutSuccessUrl("/login").permitAll()
-				.and().exceptionHandling().accessDeniedPage("/books/403").and().cors().and().csrf().disable();
+				.successForwardUrl("/students/list").permitAll().and().logout().logoutSuccessUrl("/login").permitAll()
+				.and().exceptionHandling().accessDeniedPage("/students/403").and().cors().and().csrf().disable();
 	}
 }

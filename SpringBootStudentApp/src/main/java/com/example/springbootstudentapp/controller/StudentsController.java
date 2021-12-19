@@ -43,8 +43,8 @@ public class StudentsController {
 	}
 
 	@PostMapping("/save")
-	public String saveStudent(@RequestParam("id") int id, @RequestParam("firstname") String firstName,
-			@RequestParam("lastname") String lastName, @RequestParam("department") String department,
+	public String saveStudent(@RequestParam("id") int id, @RequestParam("firstName") String firstName,
+			@RequestParam("lastName") String lastName, @RequestParam("department") String department,
 			@RequestParam("country") String country) {
 
 		Student theStudent;
@@ -70,7 +70,7 @@ public class StudentsController {
 	}
 
 	@RequestMapping("/search")
-	public String search(@RequestParam("firstname") String firstName, @RequestParam("lastname") String lastName, Model theModel) {
+	public String search(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, Model theModel) {
 		if (firstName.trim().isEmpty() && lastName.trim().isEmpty()) {
 			return "redirect:/students/list";
 		} else {
